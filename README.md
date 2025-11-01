@@ -61,7 +61,17 @@ graph TD;
     style Fim fill:#228B22,color:#fff
     style Lambda1 fill:#FF9900,color:#fff
     style Lambda2 fill:#FF9900,color:#fff
+    style Choice fill:#0073bb,color:#fff
+    style SNS fill:#D82233,color:#fff
+
+    Inicio[Início do Fluxo] --> Lambda1(Executa Lambda 'ValidarPedido');
+    Lambda1 --> Choice{Pedido Válido?};
+    Choice -- Sim --> Lambda2(Executa Lambda 'ProcessarPedido');
+    Choice -- Não --> SNS(Envia Notificação via SNS);
+    Lambda2 --> Fim[Fim];
+    SNS --> Fim;` ``` `  
 ---
+
 
 ## 🚀 Principais Insights e Desafios
 
