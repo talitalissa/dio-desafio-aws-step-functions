@@ -69,27 +69,4 @@ graph TD;
     Choice -- Sim --> Lambda2(Executa Lambda 'ProcessarPedido');
     Choice -- Não --> SNS(Envia Notificação via SNS);
     Lambda2 --> Fim[Fim];
-    SNS --> Fim;` ``` `  
----
-
-
-## 🚀 Principais Insights e Desafios
-
-Documentar os insights é o coração do desafio.
-
-### Pontos Positivos e Aprendizados:
-* **Visibilidade:** A capacidade de ver *exatamente* onde o fluxo falhou (com logs de input e output para cada passo) é a maior vantagem. Facilita imensamente o debug.
-* **Desacoplamento:** Os serviços não precisam se conhecer. O Step Function atua como o maestro, dizendo quem toca e quando.
-* **Resiliência:** O tratamento de erro nativo (Retry e Catch) é muito poderoso. O fluxo pode tentar novamente executar uma Lambda que falhou por *timeout*, por exemplo.
-
-### Desafios Encontrados:
-* **Permissões (IAM):** O desafio mais comum. A *Role* do Step Function precisa de permissão explícita para invocar cada serviço (ex: `lambda:InvokeFunction`, `sns:Publish`).
-* **Linguagem ASL:** Embora o editor visual ajude, entender a sintaxe do JSON (Amazon States Language) para passar dados entre os estados (usando `ResultPath`, `InputPath`, `OutputPath`) foi complexo no início.
-
----
-
-
-## 🔗 Recursos Úteis
-
-* [Documentação Oficial - AWS Step Functions (PT-BR)](https://aws.amazon.com/pt/step-functions/)
-* [O que é a Amazon States Language (ASL)?](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+    SNS --> Fim;
